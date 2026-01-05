@@ -19,25 +19,19 @@ export default function Navigation() {
   return (
     <>
       {/* Desktop Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 hidden md:block">
+      <nav className="fixed top-0 left-0 right-0 z-50 hidden md:block mix-blend-difference">
         <div className="flex justify-between items-center px-8 py-6">
-          <Link href="/" className="text-lg font-medium tracking-tight">
-            Savoy Grange
+          <Link href="/" className="display-heading text-xl text-white">
+            SG
           </Link>
           <div className="flex gap-8">
             {navItems.slice(1).map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="relative text-sm text-muted hover:text-foreground transition-colors"
+                className="relative accent-text text-xs text-white/70 hover:text-white transition-colors link-underline"
               >
                 {item.label}
-                {pathname === item.href && (
-                  <motion.div
-                    layoutId="underline"
-                    className="absolute -bottom-1 left-0 right-0 h-px bg-foreground"
-                  />
-                )}
               </Link>
             ))}
           </div>
@@ -46,27 +40,27 @@ export default function Navigation() {
 
       {/* Mobile Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 md:hidden">
-        <div className="flex justify-between items-center px-6 py-4">
-          <Link href="/" className="text-lg font-medium tracking-tight">
+        <div className="flex justify-between items-center px-6 py-4 mix-blend-difference">
+          <Link href="/" className="display-heading text-xl text-white">
             SG
           </Link>
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="w-8 h-8 flex flex-col justify-center items-center gap-1.5"
+            className="w-10 h-10 flex flex-col justify-center items-center gap-1.5 z-50"
             aria-label="Toggle menu"
           >
             <motion.span
-              className="w-6 h-px bg-foreground block"
+              className="w-6 h-[2px] bg-white block"
               animate={{
                 rotate: isOpen ? 45 : 0,
-                y: isOpen ? 3 : 0,
+                y: isOpen ? 4 : 0,
               }}
             />
             <motion.span
-              className="w-6 h-px bg-foreground block"
+              className="w-6 h-[2px] bg-white block"
               animate={{
                 rotate: isOpen ? -45 : 0,
-                y: isOpen ? -3 : 0,
+                y: isOpen ? -4 : 0,
               }}
             />
           </button>
@@ -80,21 +74,22 @@ export default function Navigation() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
             className="fixed inset-0 bg-background z-40 md:hidden flex items-center justify-center"
           >
-            <nav className="flex flex-col items-center gap-8">
+            <nav className="flex flex-col items-center gap-6">
               {navItems.map((item, index) => (
                 <motion.div
                   key={item.href}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
-                  transition={{ delay: index * 0.1 }}
+                  transition={{ delay: index * 0.1, duration: 0.4 }}
                 >
                   <Link
                     href={item.href}
                     onClick={() => setIsOpen(false)}
-                    className={`text-3xl font-light ${
+                    className={`display-heading text-4xl ${
                       pathname === item.href ? "text-foreground" : "text-muted"
                     }`}
                   >

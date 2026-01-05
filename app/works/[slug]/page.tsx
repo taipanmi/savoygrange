@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getWork, works } from "@/lib/works";
@@ -20,83 +21,134 @@ export default function WorkPage({ params }: WorkPageProps) {
 
   const currentIndex = works.findIndex((w) => w.slug === slug);
   const nextWork = works[(currentIndex + 1) % works.length];
+  const prevWork = works[(currentIndex - 1 + works.length) % works.length];
 
   return (
-    <main className="min-h-screen pt-32 pb-24 px-6 md:px-16">
-      {/* Back link */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.4 }}
-      >
-        <Link
-          href="/works"
-          className="text-sm text-muted hover:text-foreground transition-colors mb-12 block"
-        >
-          ← Back to works
-        </Link>
-      </motion.div>
+    <main className="min-h-screen grain">
+      {/* Hero Image */}
+      <section className="h-screen relative">
+        <Image
+          src={work.image}
+          alt={work.title}
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
 
-      {/* Title Section */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-        className="mb-12"
-      >
-        <h1 className="text-4xl md:text-6xl font-light mb-4">{work.title}</h1>
-        <div className="flex gap-4 text-muted">
-          <span>{work.category}</span>
-          <span>—</span>
-          <span>{work.year}</span>
+        {/* Title overlay */}
+        <div className="absolute bottom-0 left-0 right-0 p-8 md:p-16">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <Link
+              href="/works"
+              className="accent-text text-xs text-muted hover:text-foreground transition-colors mb-8 inline-block"
+            >
+              ← All Works
+            </Link>
+            <h1 className="display-heading text-5xl md:text-7xl lg:text-9xl mb-4">
+              {work.title}
+            </h1>
+            <div className="flex items-center gap-6 text-muted">
+              <span className="accent-text text-sm">{work.category}</span>
+              <span className="w-12 h-px bg-muted" />
+              <span>{work.year}</span>
+            </div>
+          </motion.div>
         </div>
-      </motion.div>
-
-      {/* Main Image */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        className="mb-16"
-      >
-        <div className="aspect-[16/10] md:aspect-[21/9] bg-border/20 flex items-center justify-center">
-          <span className="text-muted text-sm">[ Image: {work.title} ]</span>
-        </div>
-      </motion.div>
+      </section>
 
       {/* Description */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-        className="max-w-2xl mb-24"
-      >
-        <h2 className="text-xs uppercase tracking-widest text-muted mb-4">
-          About this work
-        </h2>
-        <p className="text-lg md:text-xl leading-relaxed text-muted">
-          {work.description}
-        </p>
-      </motion.div>
+      <section className="py-24 md:py-32 px-6 md:px-16">
+        <div className="grid md:grid-cols-2 gap-16">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <span className="accent-text text-xs text-muted block mb-6">About This Work</span>
+            <h2 className="display-heading text-3xl md:text-4xl">
+              The Story
+            </h2>
+          </motion.div>
 
-      {/* Next Project */}
-      {nextWork && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="border-t border-border pt-16"
-        >
-          <span className="text-xs uppercase tracking-widest text-muted mb-6 block">
-            Next Project
-          </span>
-          <Link href={`/works/${nextWork.slug}`} className="group block">
-            <h3 className="text-2xl md:text-3xl font-light group-hover:text-muted transition-colors">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            viewport={{ once: true }}
+          >
+            <p className="text-lg md:text-xl text-muted leading-relaxed">
+              {work.description}
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Additional Images (placeholder for more images) */}
+      <section className="px-6 md:px-16 pb-24">
+        <div className="grid md:grid-cols-2 gap-6">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="relative aspect-[4/5] image-hover"
+          >
+            <Image
+              src={work.image}
+              alt={`${work.title} detail 1`}
+              fill
+              className="object-cover"
+            />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="relative aspect-[4/5] image-hover mt-0 md:mt-24"
+          >
+            <Image
+              src={work.image}
+              alt={`${work.title} detail 2`}
+              fill
+              className="object-cover grayscale"
+            />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Project Navigation */}
+      <section className="border-t border-border">
+        <div className="grid md:grid-cols-2">
+          {/* Previous */}
+          <Link
+            href={`/works/${prevWork.slug}`}
+            className="group p-8 md:p-16 border-b md:border-b-0 md:border-r border-border hover:bg-foreground/5 transition-colors"
+          >
+            <span className="accent-text text-xs text-muted block mb-4">Previous</span>
+            <h3 className="display-heading text-2xl md:text-3xl group-hover:-translate-x-2 transition-transform">
+              ← {prevWork.title}
+            </h3>
+          </Link>
+
+          {/* Next */}
+          <Link
+            href={`/works/${nextWork.slug}`}
+            className="group p-8 md:p-16 text-right hover:bg-foreground/5 transition-colors"
+          >
+            <span className="accent-text text-xs text-muted block mb-4">Next</span>
+            <h3 className="display-heading text-2xl md:text-3xl group-hover:translate-x-2 transition-transform">
               {nextWork.title} →
             </h3>
           </Link>
-        </motion.div>
-      )}
+        </div>
+      </section>
     </main>
   );
 }
