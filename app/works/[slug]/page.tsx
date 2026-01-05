@@ -25,83 +25,99 @@ export default function WorkPage({ params }: WorkPageProps) {
 
   return (
     <main className="min-h-screen grain">
-      {/* Hero Image */}
-      <section className="h-screen relative">
-        <Image
-          src={work.image}
-          alt={work.title}
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
-
-        {/* Title overlay */}
-        <div className="absolute bottom-0 left-0 right-0 p-8 md:p-16">
+      {/* Hero - Album Art */}
+      <section className="min-h-screen relative flex items-center justify-center px-6 md:px-16 py-32">
+        <div className="grid md:grid-cols-2 gap-12 md:gap-24 items-center max-w-7xl w-full">
+          {/* Album Art */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+            className="relative aspect-square image-hover"
+          >
+            <Image
+              src={work.image}
+              alt={work.title}
+              fill
+              className="object-cover"
+              priority
+            />
+          </motion.div>
+
+          {/* Info */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <Link
               href="/works"
               className="accent-text text-xs text-muted hover:text-foreground transition-colors mb-8 inline-block"
             >
-              ← All Works
+              ← All Releases
             </Link>
-            <h1 className="display-heading text-5xl md:text-7xl lg:text-9xl mb-4">
+
+            <span className="accent-text text-xs text-muted block mb-4">
+              {work.category} • {work.year}
+            </span>
+
+            <h1 className="display-heading text-5xl md:text-7xl mb-8">
               {work.title}
             </h1>
-            <div className="flex items-center gap-6 text-muted">
-              <span className="accent-text text-sm">{work.category}</span>
-              <span className="w-12 h-px bg-muted" />
-              <span>{work.year}</span>
+
+            <p className="text-lg text-muted leading-relaxed mb-12">
+              {work.description}
+            </p>
+
+            {/* Streaming buttons */}
+            <div className="flex flex-wrap gap-4">
+              <a
+                href="#"
+                className="inline-block border border-foreground px-8 py-4 accent-text text-sm hover:bg-foreground hover:text-background transition-all duration-300"
+              >
+                Spotify
+              </a>
+              <a
+                href="#"
+                className="inline-block border border-foreground px-8 py-4 accent-text text-sm hover:bg-foreground hover:text-background transition-all duration-300"
+              >
+                Apple Music
+              </a>
+              <a
+                href="#"
+                className="inline-block border border-foreground px-8 py-4 accent-text text-sm hover:bg-foreground hover:text-background transition-all duration-300"
+              >
+                SoundCloud
+              </a>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Description */}
-      <section className="py-24 md:py-32 px-6 md:px-16">
-        <div className="grid md:grid-cols-2 gap-16">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <span className="accent-text text-xs text-muted block mb-6">About This Work</span>
-            <h2 className="display-heading text-3xl md:text-4xl">
-              The Story
-            </h2>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            viewport={{ once: true }}
-          >
-            <p className="text-lg md:text-xl text-muted leading-relaxed">
-              {work.description}
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Additional Images (placeholder for more images) */}
+      {/* Additional visuals */}
       <section className="px-6 md:px-16 pb-24">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="mb-12"
+        >
+          <span className="accent-text text-xs text-muted block mb-4">Visuals</span>
+          <h2 className="display-heading text-3xl md:text-4xl">Artwork</h2>
+        </motion.div>
+
         <div className="grid md:grid-cols-2 gap-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="relative aspect-[4/5] image-hover"
+            className="relative aspect-[4/3] image-hover"
           >
             <Image
               src={work.image}
-              alt={`${work.title} detail 1`}
+              alt={`${work.title} artwork`}
               fill
               className="object-cover"
             />
@@ -111,11 +127,11 @@ export default function WorkPage({ params }: WorkPageProps) {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
-            className="relative aspect-[4/5] image-hover mt-0 md:mt-24"
+            className="relative aspect-[4/3] image-hover"
           >
             <Image
               src={work.image}
-              alt={`${work.title} detail 2`}
+              alt={`${work.title} artwork alt`}
               fill
               className="object-cover grayscale"
             />
@@ -123,26 +139,24 @@ export default function WorkPage({ params }: WorkPageProps) {
         </div>
       </section>
 
-      {/* Project Navigation */}
+      {/* Navigation */}
       <section className="border-t border-border">
         <div className="grid md:grid-cols-2">
-          {/* Previous */}
           <Link
             href={`/works/${prevWork.slug}`}
             className="group p-8 md:p-16 border-b md:border-b-0 md:border-r border-border hover:bg-foreground/5 transition-colors"
           >
-            <span className="accent-text text-xs text-muted block mb-4">Previous</span>
+            <span className="accent-text text-xs text-muted block mb-4">Previous Release</span>
             <h3 className="display-heading text-2xl md:text-3xl group-hover:-translate-x-2 transition-transform">
               ← {prevWork.title}
             </h3>
           </Link>
 
-          {/* Next */}
           <Link
             href={`/works/${nextWork.slug}`}
             className="group p-8 md:p-16 text-right hover:bg-foreground/5 transition-colors"
           >
-            <span className="accent-text text-xs text-muted block mb-4">Next</span>
+            <span className="accent-text text-xs text-muted block mb-4">Next Release</span>
             <h3 className="display-heading text-2xl md:text-3xl group-hover:translate-x-2 transition-transform">
               {nextWork.title} →
             </h3>

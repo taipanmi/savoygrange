@@ -6,36 +6,38 @@ export interface Work {
   description: string;
   image: string;
   featured?: boolean;
+  spotify?: string;
+  apple?: string;
 }
 
 export const works: Work[] = [
   {
-    slug: "ethereal-forms",
-    title: "Ethereal Forms",
+    slug: "midnight-waves",
+    title: "Midnight Waves",
     year: "2024",
-    category: "Mixed Media",
+    category: "Single",
     description:
-      "An exploration of light and shadow through layered textures. This piece investigates the boundaries between the physical and the intangible, using unconventional materials to create depth and movement.",
-    image: "https://images.unsplash.com/photo-1549490349-8643362247b5?w=1600&q=90",
+      "A late-night exploration of ambient textures and driving rhythms. Midnight Waves captures the energy of city nights through layered synths and hypnotic beats.",
+    image: "https://images.unsplash.com/photo-1614149162883-504ce4d13909?w=1600&q=90",
     featured: true,
   },
   {
-    slug: "silent-conversations",
-    title: "Silent Conversations",
+    slug: "echoes-ep",
+    title: "Echoes",
     year: "2024",
-    category: "Photography",
+    category: "EP",
     description:
-      "A series capturing moments of quiet connection in urban spaces. These images document the unspoken dialogues that occur in everyday life, frozen in time.",
-    image: "https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=1600&q=90",
+      "A four-track journey through introspective soundscapes. Echoes blends organic instrumentation with electronic production, creating a sonic diary of reflection and growth.",
+    image: "https://images.unsplash.com/photo-1571330735066-03aaa9429d89?w=1600&q=90",
   },
   {
-    slug: "fragments-of-memory",
-    title: "Fragments of Memory",
+    slug: "first-light",
+    title: "First Light",
     year: "2023",
-    category: "Digital",
+    category: "Single",
     description:
-      "Digital compositions that piece together visual memories into cohesive narratives. Each fragment represents a moment, a feeling, a fleeting thought preserved in pixels.",
-    image: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=1600&q=90",
+      "The debut release marking the beginning of a new sonic chapter. First Light combines atmospheric pads with crisp percussion, setting the tone for what's to come.",
+    image: "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=1600&q=90",
   },
 ];
 

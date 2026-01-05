@@ -22,7 +22,7 @@ export default function Home() {
           style={{ y }}
         >
           <Image
-            src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1920&q=90"
+            src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1920&q=90"
             alt="Background"
             fill
             className="object-cover opacity-20"
@@ -50,7 +50,7 @@ export default function Home() {
           transition={{ duration: 1, delay: 0.8 }}
           className="accent-text text-xs md:text-sm text-muted mt-8 relative z-10"
         >
-          Visual Artist • Creative Director
+          Music Producer • Artist
         </motion.p>
 
         {/* Scroll indicator */}
@@ -121,7 +121,7 @@ export default function Home() {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <span className="accent-text text-xs text-muted block mb-4">Selected Works</span>
+          <span className="accent-text text-xs text-muted block mb-4">Latest Releases</span>
           <div className="flex justify-between items-end">
             <h2 className="display-heading text-4xl md:text-6xl">Latest</h2>
             <Link href="/works" className="accent-text text-xs text-muted link-underline">
@@ -187,9 +187,9 @@ export default function Home() {
             className="flex flex-col justify-center"
           >
             <p className="text-lg md:text-xl text-muted leading-relaxed mb-8">
-              Visual artist exploring the boundaries of perception through various mediums.
-              My practice centers on the quiet moments—the spaces between the obvious,
-              where meaning emerges from subtlety.
+              Music producer and artist crafting sonic landscapes that blur genre boundaries.
+              Creating sounds that resonate with the spaces between beats,
+              where emotion meets rhythm.
             </p>
             <Link
               href="/about"
@@ -231,13 +231,13 @@ export default function Home() {
           <span className="accent-text text-xs">© {new Date().getFullYear()} Savoy Grange</span>
           <div className="flex gap-8">
             <a href="#" className="link-underline hover:text-foreground transition-colors">
-              Instagram
+              Spotify
             </a>
             <a href="#" className="link-underline hover:text-foreground transition-colors">
-              Twitter
+              Apple Music
             </a>
             <a href="#" className="link-underline hover:text-foreground transition-colors">
-              Behance
+              SoundCloud
             </a>
           </div>
         </div>

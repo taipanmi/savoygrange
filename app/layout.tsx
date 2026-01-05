@@ -19,13 +19,13 @@ const francoisOne = Francois_One({
 });
 
 export const metadata: Metadata = {
-  title: "Savoy Grange",
-  description: "Artist portfolio showcasing creative works",
-  keywords: ["artist", "portfolio", "creative", "art", "gallery"],
+  title: "Savoy Grange | Music Producer & Artist",
+  description: "Music producer and artist crafting sonic landscapes that blur genre boundaries",
+  keywords: ["music", "producer", "artist", "electronic", "ambient", "beats"],
   authors: [{ name: "Savoy Grange" }],
   openGraph: {
     title: "Savoy Grange",
-    description: "Artist portfolio showcasing creative works",
+    description: "Music producer and artist crafting sonic landscapes",
     type: "website",
   },
 };

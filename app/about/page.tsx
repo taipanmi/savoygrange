@@ -11,7 +11,7 @@ export default function AboutPage() {
       <section className="min-h-screen relative flex items-end">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=1920&q=90"
+            src="https://images.unsplash.com/photo-1598387993441-a364f854c3e1?w=1920&q=90"
             alt="Artist portrait"
             fill
             className="object-cover"
@@ -49,7 +49,7 @@ export default function AboutPage() {
             <h2 className="display-heading text-4xl md:text-5xl mb-8">
               The
               <br />
-              Artist
+              Sound
             </h2>
           </motion.div>
 
@@ -61,20 +61,18 @@ export default function AboutPage() {
             className="space-y-6 text-muted leading-relaxed"
           >
             <p className="text-lg md:text-xl">
-              Visual artist exploring the boundaries of perception through various mediums.
-              Based in the intersection of digital and traditional art forms.
+              Music producer and artist crafting sonic landscapes that blur the lines
+              between electronic, ambient, and experimental sounds.
             </p>
             <p>
-              My practice centers on the quiet moments—the spaces between the obvious,
-              where meaning emerges from subtlety. I work primarily with mixed media,
-              photography, and digital compositions, each offering unique possibilities
-              for expression.
+              Drawing inspiration from late-night sessions, urban atmospheres, and
+              the spaces between genres, each release is a sonic exploration—a
+              journey through texture, rhythm, and emotion.
             </p>
             <p>
-              The work investigates how we perceive and remember, questioning the
-              reliability of visual experience. Through layering, texture, and careful
-              consideration of negative space, I aim to create pieces that reward
-              sustained attention.
+              With a production style that balances organic warmth with digital
+              precision, the music invites listeners into immersive soundscapes
+              designed for both the dancefloor and headphone listening.
             </p>
           </motion.div>
         </div>
@@ -89,15 +87,15 @@ export default function AboutPage() {
           viewport={{ once: true }}
           className="max-w-4xl mx-auto text-center"
         >
-          <span className="accent-text text-xs text-muted block mb-8">Artist Statement</span>
+          <span className="accent-text text-xs text-muted block mb-8">Philosophy</span>
           <blockquote className="display-heading text-3xl md:text-4xl lg:text-5xl leading-tight">
-            "I seek to capture not what is seen, but what is felt in the seeing—
-            the weight of a shadow, the memory of light."
+            "Music is the space between the notes—
+            it's the silence that gives sound its meaning."
           </blockquote>
         </motion.div>
       </section>
 
-      {/* Experience / Highlights */}
+      {/* Stats */}
       <section className="py-24 md:py-32 px-6 md:px-16 border-t border-border">
         <div className="grid md:grid-cols-3 gap-16">
           <motion.div
@@ -106,8 +104,8 @@ export default function AboutPage() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <span className="display-heading text-6xl md:text-7xl block mb-4">5+</span>
-            <span className="accent-text text-xs text-muted">Years Experience</span>
+            <span className="display-heading text-6xl md:text-7xl block mb-4">3</span>
+            <span className="accent-text text-xs text-muted">Releases</span>
           </motion.div>
 
           <motion.div
@@ -116,8 +114,8 @@ export default function AboutPage() {
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <span className="display-heading text-6xl md:text-7xl block mb-4">20+</span>
-            <span className="accent-text text-xs text-muted">Projects Completed</span>
+            <span className="display-heading text-6xl md:text-7xl block mb-4">∞</span>
+            <span className="accent-text text-xs text-muted">Hours in the Studio</span>
           </motion.div>
 
           <motion.div
@@ -126,13 +124,13 @@ export default function AboutPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <span className="display-heading text-6xl md:text-7xl block mb-4">∞</span>
-            <span className="accent-text text-xs text-muted">Ideas Brewing</span>
+            <span className="display-heading text-6xl md:text-7xl block mb-4">1</span>
+            <span className="accent-text text-xs text-muted">Vision</span>
           </motion.div>
         </div>
       </section>
 
-      {/* CTA */}
+      {/* Listen */}
       <section className="py-24 md:py-32 px-6 md:px-16 border-t border-border">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
           <motion.div
@@ -142,9 +140,9 @@ export default function AboutPage() {
             viewport={{ once: true }}
           >
             <h2 className="display-heading text-4xl md:text-5xl">
-              Let's Create
+              Listen
               <br />
-              Something
+              Now
             </h2>
           </motion.div>
 
@@ -153,13 +151,20 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
             viewport={{ once: true }}
+            className="flex gap-6"
           >
-            <Link
-              href="/contact"
-              className="inline-block border border-foreground px-12 py-4 accent-text text-sm hover:bg-foreground hover:text-background transition-all duration-300"
+            <a
+              href="#"
+              className="inline-block border border-foreground px-8 py-4 accent-text text-sm hover:bg-foreground hover:text-background transition-all duration-300"
             >
-              Get in Touch
-            </Link>
+              Spotify
+            </a>
+            <a
+              href="#"
+              className="inline-block border border-foreground px-8 py-4 accent-text text-sm hover:bg-foreground hover:text-background transition-all duration-300"
+            >
+              Apple Music
+            </a>
           </motion.div>
         </div>
       </section>
